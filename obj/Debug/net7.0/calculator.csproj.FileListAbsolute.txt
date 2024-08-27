@@ -18,7 +18,6 @@
 /Users/nrml_npn/Desktop/dotnet/calculator/calculator/bin/Debug/net7.0/calculator.runtimeconfig.json
 /Users/nrml_npn/Desktop/dotnet/calculator/calculator/bin/Debug/net7.0/calculator.dll
 /Users/nrml_npn/Desktop/dotnet/calculator/calculator/bin/Debug/net7.0/calculator.pdb
-/Users/nrml_npn/Desktop/dotnet/calculator/calculator/obj/Debug/net7.0/calculator.csproj.AssemblyReference.cache
 /Users/nrml_npn/Desktop/dotnet/calculator/calculator/obj/Debug/net7.0/calculator.GeneratedMSBuildEditorConfig.editorconfig
 /Users/nrml_npn/Desktop/dotnet/calculator/calculator/obj/Debug/net7.0/calculator.AssemblyInfoInputs.cache
 /Users/nrml_npn/Desktop/dotnet/calculator/calculator/obj/Debug/net7.0/calculator.AssemblyInfo.cs
@@ -28,3 +27,4 @@
 /Users/nrml_npn/Desktop/dotnet/calculator/calculator/obj/Debug/net7.0/calculator.pdb
 /Users/nrml_npn/Desktop/dotnet/calculator/calculator/obj/Debug/net7.0/calculator.genruntimeconfig.cache
 /Users/nrml_npn/Desktop/dotnet/calculator/calculator/obj/Debug/net7.0/ref/calculator.dll
+/Users/nrml_npn/Desktop/dotnet/calculator/calculator/obj/Debug/net7.0/calculator.csproj.AssemblyReference.cache

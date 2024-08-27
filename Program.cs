@@ -2,48 +2,62 @@
 
 class Program
 {
-    static void Main()
+    public static void Main()
     {
         Greet();
+        ShowMenu();
         string userInput = "";
         while (userInput.ToLower() != "end")
         {
-            ShowMenu();
             int userProvidedInput = int.Parse(Console.ReadLine());
+            Console.WriteLine("-------------------------------");
             {
                 if (userProvidedInput == 1)
                 {
                     int addResult = 0;
                     Addition(ref addResult);
                     Console.WriteLine($"The sum is ={addResult}");
+                    Console.WriteLine("-------------------------------");
                 }
-                else if (userProvidedInput == 2)
+                else if(userProvidedInput ==2)
                 {
-                    int subResult = 0;
-                    Subtraction(ref subResult);
-                    Console.WriteLine($"the sub is={subResult}");
+                    int averageResult=0;
+                    Average(ref averageResult);
+                    Console.WriteLine($"The Average is ={averageResult}");
+                    Console.WriteLine("-------------------------------");
                 }
                 else if (userProvidedInput == 3)
                 {
-                    int mulResult = 0;
-                    Multiplication(ref mulResult);
-                    Console.WriteLine($"the mul is={mulResult}");
+                    int subResult = 0;
+                    Subtraction(ref subResult);
+                    Console.WriteLine($"The sub is={subResult}");
+                    Console.WriteLine("-------------------------------");
                 }
                 else if (userProvidedInput == 4)
                 {
-                    double divdResult = 0;
-                    Division(ref divdResult);
-                    Console.WriteLine($"the divd is={divdResult}");
+                    int mulResult = 0;
+                    Multiplication(ref mulResult);
+                    Console.WriteLine($"The mul is={mulResult}");
+                    Console.WriteLine("-------------------------------");
                 }
                 else if (userProvidedInput == 5)
                 {
-                    MultiplicationTable();
+                    double divdResult = 0;
+                    Division(ref divdResult);
+                    Console.WriteLine($"The divd is={divdResult}");
+                    Console.WriteLine("-------------------------------");
                 }
                 else if (userProvidedInput == 6)
                 {
-                    DisplaySequence();
+                    MultiplicationTable();
+                    Console.WriteLine("-------------------------------");
                 }
-                if (userProvidedInput == 7)
+                else if (userProvidedInput == 7)
+                {
+                    DisplaySequence();
+                    Console.WriteLine("-------------------------------");
+                }
+                if (userProvidedInput == 8)
                 {
                     Console.WriteLine("Closing the program...");
                     userInput = "end";
@@ -51,7 +65,7 @@ class Program
             }
         }
     }
-    static void Greet()
+    public static void Greet()
     {
         Console.WriteLine("Hello, welcome to my Calculator");
         Console.WriteLine("-------------------------------");
@@ -73,22 +87,23 @@ class Program
         }
         Console.WriteLine(currenttime);
     }
-    static void ShowMenu()
+    public static void ShowMenu()
     {
         Console.WriteLine("--------------------------------------------");
         Console.WriteLine("PLease select the below option for operation");
         Console.WriteLine("--------------------------------------------");
         Console.WriteLine("1.Addition");
-        Console.WriteLine("2.Subtraction");
-        Console.WriteLine("3.multiplication");
-        Console.WriteLine("4.division");
-        Console.WriteLine("5.multiplicationTable of given number");
-        Console.WriteLine("6.display\"1, 1, 2, 3, 4, 5, 6, 7, 8\"");
-        Console.WriteLine("7.Closing the program");
+        Console.WriteLine("1.Average");
+        Console.WriteLine("3.Subtraction");
+        Console.WriteLine("4.multiplication");
+        Console.WriteLine("5.division");
+        Console.WriteLine("6.multiplicationTable of given number");
+        Console.WriteLine("7.display\"1, 1, 2, 3, 4, 5, 6, 7, 8\"");
+        Console.WriteLine("8.Closing the program");
         Console.WriteLine("-------------------------------------------");
         Console.WriteLine("");
     }
-    static void Addition(ref int sum)
+    public static void Addition(ref int sum)
     {
         Console.Write("enter firstInput:-");
         int firstInput = int.Parse(Console.ReadLine());
@@ -96,7 +111,12 @@ class Program
         int secondInput = int.Parse(Console.ReadLine());
         sum = firstInput + secondInput;
     }
-    static void Subtraction(ref int sub)
+    public static void Average(ref int average)
+    {
+        int sum = Addition(ref int addResult);
+        average = sum / 2;
+    }
+    public static void Subtraction(ref int sub)
     {
         Console.Write("enter firstInput:-");
         int firstInput = int.Parse(Console.ReadLine());
@@ -104,7 +124,7 @@ class Program
         int secondInput = int.Parse(Console.ReadLine());
         sub = firstInput - secondInput;
     }
-    static void Multiplication(ref int mul)
+    public static void Multiplication(ref int mul)
     {
         Console.Write("enter firstInput:-");
         int firstInput = int.Parse(Console.ReadLine());
@@ -112,7 +132,7 @@ class Program
         int secondInput = int.Parse(Console.ReadLine());
         mul = firstInput * secondInput;
     }
-    static void Division(ref double divd)
+    public static void Division(ref double divd)
     {
         Console.Write("enter firstInput:-");
         double firstInput = int.Parse(Console.ReadLine());
@@ -127,7 +147,7 @@ class Program
             Console.WriteLine("Error");
         }
     }
-    static void MultiplicationTable()
+    public static void MultiplicationTable()
     {
         Console.Write("enter a number:-");
         int n = int.Parse(Console.ReadLine());
@@ -139,7 +159,7 @@ class Program
             Console.WriteLine($"{n} x {i} = {multipal}");
         }
     }
-    static void DisplaySequence()
+    public static void DisplaySequence()
     {
         int i = 1;
         bool firstOnePrinted = false;
