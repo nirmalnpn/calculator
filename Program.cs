@@ -11,40 +11,49 @@ class Program
         {
             int userProvidedInput = int.Parse(Console.ReadLine());
             Console.WriteLine("-------------------------------");
+            double firstInput = 0;
+            double secondInput = 0;
+            double thirdInput = 0;
+            double fourthInput = 0;
+
+            if (userProvidedInput >= 1 && userProvidedInput <= 5)
+            {
+                GetInputs(ref firstInput, ref secondInput,ref thirdInput); // Get inputs for operations
+            }
             {
                 if (userProvidedInput == 1)
                 {
-                    int addResult = 0;
-                    Addition(ref addResult);
+                    double addResult = 0;
+                    Addition(ref firstInput,ref secondInput,ref thirdInput,ref addResult);
                     Console.WriteLine($"The sum is ={addResult}");
                     Console.WriteLine("-------------------------------");
                 }
                 else if(userProvidedInput ==2)
                 {
-                    int averageResult=0;
-                    Average(ref averageResult);
+                    double averageResult=0;
+                    Average(ref firstInput, ref secondInput, ref averageResult);
                     Console.WriteLine($"The Average is ={averageResult}");
                     Console.WriteLine("-------------------------------");
                 }
                 else if (userProvidedInput == 3)
                 {
-                    int subResult = 0;
-                    Subtraction(ref subResult);
+                    double subResult = 0;
+                    Subtraction(ref firstInput, ref secondInput, ref subResult);
                     Console.WriteLine($"The sub is={subResult}");
                     Console.WriteLine("-------------------------------");
                 }
                 else if (userProvidedInput == 4)
                 {
-                    int mulResult = 0;
-                    Multiplication(ref mulResult);
+                    double mulResult = 0;
+                    Multiplication(ref firstInput, ref secondInput, ref mulResult);
                     Console.WriteLine($"The mul is={mulResult}");
                     Console.WriteLine("-------------------------------");
                 }
                 else if (userProvidedInput == 5)
                 {
                     double divdResult = 0;
-                    Division(ref divdResult);
-                    Console.WriteLine($"The divd is={divdResult}");
+                    Division(ref firstInput, ref secondInput, ref divdResult);
+                    Console.WriteLine($"The divd is={divdResult:F3}");
                     Console.WriteLine("-------------------------------");
                 }
                 else if (userProvidedInput == 6)
@@ -103,41 +112,34 @@ class Program
         Console.WriteLine("-------------------------------------------");
         Console.WriteLine("");
     }
-    public static void Addition(ref int sum)
+    public static void GetInputs(ref double firstInput,ref double secondInput,ref double thirdInput)
     {
         Console.Write("enter firstInput:-");
-        int firstInput = int.Parse(Console.ReadLine());
+        firstInput = int.Parse(Console.ReadLine());
         Console.Write("enter secondInput:-");
-        int secondInput = int.Parse(Console.ReadLine());
-        sum = firstInput + secondInput;
+        secondInput = int.Parse(Console.ReadLine());
+        Console.Write("enter thirdInput:-");
+        thirdInput = int.Parse(Console.ReadLine());
     }
-    public static void Average(ref int average)
+    public static void Addition(ref double firstInput, ref double secondInput, ref double thirdInput, ref double sum)
     {
-        int sum = Addition(ref int addResult);
+        sum = firstInput + secondInput + thirdInput;
+    }
+    public static void Average(ref double firstInput, ref double secondInput, ref double average)
+    {
+        double sum = firstInput + secondInput;
         average = sum / 2;
     }
-    public static void Subtraction(ref int sub)
+    public static void Subtraction(ref double firstInput, ref double secondInput, ref double sub)
     {
-        Console.Write("enter firstInput:-");
-        int firstInput = int.Parse(Console.ReadLine());
-        Console.Write("enter secondInput:-");
-        int secondInput = int.Parse(Console.ReadLine());
         sub = firstInput - secondInput;
     }
-    public static void Multiplication(ref int mul)
+    public static void Multiplication(ref double firstInput, ref double secondInput, ref double mul)
     {
-        Console.Write("enter firstInput:-");
-        int firstInput = int.Parse(Console.ReadLine());
-        Console.Write("enter secondInput:-");
-        int secondInput = int.Parse(Console.ReadLine());
         mul = firstInput * secondInput;
     }
-    public static void Division(ref double divd)
+    public static void Division(ref double firstInput, ref double secondInput, ref double divd)
     {
-        Console.Write("enter firstInput:-");
-        double firstInput = int.Parse(Console.ReadLine());
-        Console.Write("enter secondInput:-");
-        double secondInput = int.Parse(Console.ReadLine());
         if (secondInput != 0)
         {
             divd = firstInput / secondInput;
