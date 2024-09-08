@@ -7,165 +7,202 @@ class Program
         Greet();
         ShowMenu();
         string userInput = "";
+        int answer = 0; // Initialize the answer variable
+
         while (userInput.ToLower() != "end")
         {
             int userProvidedInput = int.Parse(Console.ReadLine());
             Console.WriteLine("-------------------------------");
-            double firstInput = 0;
-            double secondInput = 0;
-            double thirdInput = 0;
-            double fourthInput = 0;
 
             if (userProvidedInput >= 1 && userProvidedInput <= 5)
             {
-                GetInputs(ref firstInput, ref secondInput,ref thirdInput); // Get inputs for operations
+                (int firstInput, int secondInput) = GetInputs(answer); // Get inputs for operations
+
+                switch (userProvidedInput)
+                {
+                    case 1:
+                        int addResult = Addition(firstInput, secondInput);
+                        Console.WriteLine($"The sum is = {addResult}");
+                        answer = addResult;
+                        break;
+
+                    case 2:
+                        double averageResult = Average(firstInput, secondInput);
+                        Console.WriteLine($"The Average is = {averageResult}");
+                        answer = (int)averageResult;
+                        break;
+
+                    case 3:
+                        int subResult = Subtraction(firstInput, secondInput);
+                        Console.WriteLine($"The difference is = {subResult}");
+                        answer = subResult;
+                        break;
+
+                    case 4:
+                        int mulResult = Multiplication(firstInput, secondInput);
+                        Console.WriteLine($"The product is = {mulResult}");
+                        answer = mulResult;
+                        break;
+
+                    case 5:
+                        double divdResult = Division(firstInput, secondInput);
+                        Console.WriteLine($"The quotient is = {divdResult}");
+                        answer = (int)divdResult;
+                        break;
+                    
+
+                    default:
+                        Console.WriteLine("Invalid option, please try again.");
+                        break;
+                }
             }
+            else
             {
-                if (userProvidedInput == 1)
+                switch (userProvidedInput)
                 {
-                    double addResult = 0;
-                    Addition(ref firstInput,ref secondInput,ref thirdInput,ref addResult);
-                    Console.WriteLine($"The sum is ={addResult}");
-                    Console.WriteLine("-------------------------------");
-                }
-                else if(userProvidedInput ==2)
-                {
-                    double averageResult=0;
-                    Average(ref firstInput, ref secondInput, ref averageResult);
-                    Console.WriteLine($"The Average is ={averageResult}");
-                    Console.WriteLine("-------------------------------");
-                }
-                else if (userProvidedInput == 3)
-                {
-                    double subResult = 0;
-                    Subtraction(ref firstInput, ref secondInput, ref subResult);
-                    Console.WriteLine($"The sub is={subResult}");
-                    Console.WriteLine("-------------------------------");
-                }
-                else if (userProvidedInput == 4)
-                {
-                    double mulResult = 0;
-                    Multiplication(ref firstInput, ref secondInput, ref mulResult);
-                    Console.WriteLine($"The mul is={mulResult}");
-                    Console.WriteLine("-------------------------------");
-                }
-                else if (userProvidedInput == 5)
-                {
-                    double divdResult = 0;
-                    Division(ref firstInput, ref secondInput, ref divdResult);
-                    Console.WriteLine($"The divd is={divdResult:F3}");
-                    Console.WriteLine("-------------------------------");
-                }
-                else if (userProvidedInput == 6)
-                {
-                    MultiplicationTable();
-                    Console.WriteLine("-------------------------------");
-                }
-                else if (userProvidedInput == 7)
-                {
-                    DisplaySequence();
-                    Console.WriteLine("-------------------------------");
-                }
-                if (userProvidedInput == 8)
-                {
-                    Console.WriteLine("Closing the program...");
-                    userInput = "end";
+                    case 6:
+                        int seriesAddResult = SeriesAddition();
+                        Console.WriteLine($"The sum of the series is = {seriesAddResult}");
+                        answer = seriesAddResult;
+                        break;
+                    case 7:
+                        MultiplicationTable();
+                        break;
+
+                    case 8:
+                        DisplaySequence();
+                        break;
+                    case 0:
+                        Console.WriteLine("Closing the program...");
+                        userInput = "end";
+                        break;
+
+                    default:
+                        Console.WriteLine("Invalid option, please try again.");
+                        break;
                 }
             }
+            Console.WriteLine("-------------------------------");
         }
     }
+
     public static void Greet()
     {
         Console.WriteLine("Hello, welcome to my Calculator");
         Console.WriteLine("-------------------------------");
-        DateTime currenttime = DateTime.Now;
-        if (currenttime.Hour < 12)
+        DateTime currentTime = DateTime.Now;
+        if (currentTime.Hour < 12)
         {
-            Console.WriteLine("Good moring");
-            Console.WriteLine("-------------------------------");
+            Console.WriteLine("Good morning");
         }
-        else if (currenttime.Hour > 12 && currenttime.Hour < 6)
+        else if (currentTime.Hour >= 12 && currentTime.Hour < 18)
         {
             Console.WriteLine("Good afternoon");
-            Console.WriteLine("-------------------------------");
         }
         else
         {
             Console.WriteLine("Good evening");
-            Console.WriteLine("-------------------------------");
         }
-        Console.WriteLine(currenttime);
+        Console.WriteLine("-------------------------------");
+        Console.WriteLine(currentTime);
     }
+
     public static void ShowMenu()
     {
         Console.WriteLine("--------------------------------------------");
-        Console.WriteLine("PLease select the below option for operation");
+        Console.WriteLine("Please select an option for operation:");
         Console.WriteLine("--------------------------------------------");
-        Console.WriteLine("1.Addition");
-        Console.WriteLine("1.Average");
-        Console.WriteLine("3.Subtraction");
-        Console.WriteLine("4.multiplication");
-        Console.WriteLine("5.division");
-        Console.WriteLine("6.multiplicationTable of given number");
-        Console.WriteLine("7.display\"1, 1, 2, 3, 4, 5, 6, 7, 8\"");
-        Console.WriteLine("8.Closing the program");
+        Console.WriteLine("0. Close the program");
+        Console.WriteLine("1. Addition");
+        Console.WriteLine("2. Average");
+        Console.WriteLine("3. Subtraction");
+        Console.WriteLine("4. Multiplication");
+        Console.WriteLine("5. Division");
+        Console.WriteLine("6. Series Addition");
+        Console.WriteLine("7. Multiplication Table of given number");
+        Console.WriteLine("8. Display \"1, 1, 2, 3, 4, 5, 6, 7, 8\"");
         Console.WriteLine("-------------------------------------------");
         Console.WriteLine("");
     }
-    public static void GetInputs(ref double firstInput,ref double secondInput,ref double thirdInput)
+
+    public static (int, int) GetInputs(int ans)
     {
-        Console.Write("enter firstInput:-");
-        firstInput = int.Parse(Console.ReadLine());
-        Console.Write("enter secondInput:-");
-        secondInput = int.Parse(Console.ReadLine());
-        Console.Write("enter thirdInput:-");
-        thirdInput = int.Parse(Console.ReadLine());
+        Console.Write("Enter first input (or type 'ans'): ");
+        string firstInputStr = Console.ReadLine();
+        int firstInput = firstInputStr.ToLower() == "ans" ? ans : int.Parse(firstInputStr);
+
+        Console.Write("Enter second input (or type 'ans'): ");
+        string secondInputStr = Console.ReadLine();
+        int secondInput = secondInputStr.ToLower() == "ans" ? ans : int.Parse(secondInputStr);
+
+        return (firstInput, secondInput);
     }
-    public static void Addition(ref double firstInput, ref double secondInput, ref double thirdInput, ref double sum)
+
+    public static int Addition(int firstInput, int secondInput)
     {
-        sum = firstInput + secondInput + thirdInput;
+        return firstInput + secondInput;
     }
-    public static void Average(ref double firstInput, ref double secondInput, ref double average)
+    public static double Average(int firstInput, int secondInput)
     {
-        double sum = firstInput + secondInput;
-        average = sum / 2;
+        int sum = firstInput + secondInput;
+        return (double)sum / 2;
     }
-    public static void Subtraction(ref double firstInput, ref double secondInput, ref double sub)
+
+    public static int Subtraction(int firstInput, int secondInput)
     {
-        sub = firstInput - secondInput;
+        return firstInput - secondInput;
     }
-    public static void Multiplication(ref double firstInput, ref double secondInput, ref double mul)
+
+    public static int Multiplication(int firstInput, int secondInput)
     {
-        mul = firstInput * secondInput;
+        return firstInput * secondInput;
     }
-    public static void Division(ref double firstInput, ref double secondInput, ref double divd)
+
+    public static double Division(int firstInput, int secondInput)
     {
         if (secondInput != 0)
         {
-            divd = firstInput / secondInput;
+            return (double)firstInput / secondInput;
         }
         else
         {
-            Console.WriteLine("Error");
+            Console.WriteLine("Error: Division by zero is not allowed.");
+            return 0;
         }
     }
+    public static int SeriesAddition()
+    {
+        Console.Write("Enter numbers separated by commas: ");
+        string inputStr = Console.ReadLine();
+
+        int[] inputs = inputStr.Split(',')
+                                .Select(s => int.Parse(s.Trim()))
+                                .ToArray();
+
+        // Sum up the inputs
+        return inputs.Sum();
+
+    }
+
     public static void MultiplicationTable()
     {
-        Console.Write("enter a number:-");
+        Console.Write("Enter a number: ");
         int n = int.Parse(Console.ReadLine());
-        Console.Write("limit:-");
+        Console.Write("Limit: ");
         int x = int.Parse(Console.ReadLine());
         for (int i = 1; i <= x; i++)
         {
-            int multipal = n * i;
-            Console.WriteLine($"{n} x {i} = {multipal}");
+            int result = n * i;
+            Console.WriteLine($"{n} x {i} = {result}");
         }
     }
+   
+
     public static void DisplaySequence()
     {
         int i = 1;
         bool firstOnePrinted = false;
-        Console.Write("Enter the limit:-");
+        Console.Write("Enter the limit: ");
         int x = int.Parse(Console.ReadLine());
         do
         {
@@ -185,3 +222,19 @@ class Program
         Console.WriteLine("");
     }
 }
+
+
+/*
+ for(int i=0;i<10;i++)
+{
+    getInput(i);
+}
+
+
+int getInput(int inputCount)
+{
+    Console.WriteLine($"please provide the {inputcount +1} input:");
+    int userInput=int.parse(Console.ReadLine());
+    return userInput;
+}
+ */
